@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "nocturne-invitations",
-      "database_id": "REPLACE_WITH_YOUR_NEW_D1_DATABASE_ID"
+      "database_id": "e285be7f-347b-4629-95bd-c75409c72a46"
     }
   ]
 }
