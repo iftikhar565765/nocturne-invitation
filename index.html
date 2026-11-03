@@ -132,6 +132,46 @@
       <circle cx="160" cy="34" r="1.6" fill="currentColor" stroke="none" />
       <path d="M96 18l40-6m-40 6 64 16" opacity=".4" />
     </symbol>
+    <symbol id="moon-phases" viewBox="0 0 240 40">
+      <g fill="none" stroke-linecap="round">
+        <circle cx="20" cy="20" r="6.5" />
+        <circle cx="56" cy="20" r="6.5" />
+        <path d="M56 13.5a6.5 6.5 0 0 1 0 13" fill="currentColor" stroke="none" opacity=".8" />
+        <circle cx="120" cy="20" r="11" />
+        <path d="M124.5 10.6a11 11 0 0 1-4 19.2 13.5 13.5 0 0 0 4-19.2Z" fill="currentColor" stroke="none" opacity=".9" />
+        <path d="M120 5.5v3.2m0 22.6v3.2M105.5 20h3.2m22.6 0h3.2" opacity=".6" />
+        <circle cx="184" cy="20" r="6.5" />
+        <path d="M184 13.5a6.5 6.5 0 0 0 0 13" fill="currentColor" stroke="none" opacity=".8" />
+        <circle cx="220" cy="20" r="6.5" />
+        <path d="M220 13.5v13M213.5 20h13" opacity=".55" />
+      </g>
+    </symbol>
+    <symbol id="garland" viewBox="0 0 1200 190" preserveAspectRatio="xMidYMin slice">
+      <g fill="none" stroke-linecap="round">
+        <path d="M-10 24 C 200 118, 420 128, 600 96 C 780 64, 1000 74, 1210 20" />
+        <path d="M-10 66 C 220 150, 460 158, 640 128 C 830 96, 1030 100, 1210 58" opacity=".55" />
+        <g stroke-width="1">
+          <path d="M148 79v20M368 120v18M600 96v20M838 84v18M1052 68v20" />
+          <path d="M258 128v16M486 138v14M724 106v16M948 96v14" opacity=".7" />
+        </g>
+      </g>
+      <g fill="currentColor" stroke="none">
+        <circle cx="148" cy="104" r="4.6" opacity=".95" />
+        <circle cx="368" cy="143" r="4.2" opacity=".8" />
+        <circle cx="600" cy="121" r="5" opacity=".95" />
+        <circle cx="838" cy="107" r="4.2" opacity=".8" />
+        <circle cx="1052" cy="93" r="4.6" opacity=".95" />
+        <circle cx="258" cy="149" r="3.6" opacity=".65" />
+        <circle cx="486" cy="157" r="3.4" opacity=".6" />
+        <circle cx="724" cy="127" r="3.6" opacity=".65" />
+        <circle cx="948" cy="115" r="3.4" opacity=".6" />
+      </g>
+      <g fill="none" stroke="currentColor" opacity=".28">
+        <circle cx="148" cy="104" r="10" />
+        <circle cx="600" cy="121" r="11" />
+        <circle cx="1052" cy="93" r="10" />
+      </g>
+    </symbol>
   </svg>
 
   <!-- ══════════════════════════════════════════════════════════
@@ -167,7 +207,7 @@
               <span class="envelope__letter-date" data-content="wedding.numerals">12 · 06 · 2027</span>
             </span>
             <span class="envelope__stamp" data-element-key="envelope-stamps">
-              <img src="assets/art/bloom.webp" alt="">
+              <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#postmark" /></svg>
             </span>
           </span>
 
@@ -259,7 +299,6 @@
          № 01 · THE INVITATION — the arch card, in the night
          ══════════════════════════════════════════════════════════ -->
       <section id="invitation" class="scene scene--invitation" aria-labelledby="invitation-title">
-        <img class="invitation-bloom" src="assets/art/bloom.webp" alt="" aria-hidden="true" data-drift>
         <div class="invite-side" aria-hidden="true">
           <span data-content="wedding.numerals">12 · 06 · 2027</span>
           <span data-content="venue.name">The Orangery at Vesper Hill</span>
@@ -269,6 +308,10 @@
             <img class="invite-card__spray invite-card__spray--tl" src="assets/art/spray-b.webp" alt="" aria-hidden="true" data-element-key="invite-spray-top">
             <img class="invite-card__spray invite-card__spray--br" src="assets/art/spray-a.webp" alt="" aria-hidden="true" data-element-key="invite-spray-bottom">
             <span class="invite-card__frame" aria-hidden="true"></span>
+
+            <svg class="invite-card__moonphases" viewBox="0 0 240 40" aria-hidden="true">
+              <use href="#moon-phases" />
+            </svg>
 
             <p class="invite-card__eyebrow eyebrow" data-content="content.invitationEyebrow">Together with their families</p>
             <h1 id="invitation-title" class="invite-card__names script" tabindex="-1">
@@ -289,7 +332,7 @@
             <p class="invite-card__venue"><span data-content="venue.name">The Orangery at Vesper Hill</span> <span data-content="content.invitationVenueSuffix">· Cotswolds</span></p>
 
             <div class="invite-actions">
-              <a class="btn" href="#rsvp">Kindly reply</a>
+              <a class="btn btn--light" href="#rsvp">Kindly reply</a>
               <a class="btn btn--ghost" href="#venue">View directions</a>
             </div>
           </article>
@@ -313,11 +356,10 @@
           </div>
 
           <div class="story-folio" data-stagger>
-            <img class="story-swag" src="assets/art/swag.webp" alt="" aria-hidden="true" data-element-key="story-garland-top">
+            <img class="story-swag" src="assets/art/swag.webp" alt="" aria-hidden="true" data-element-key="story-garland-top" data-drift>
 
-            <!-- a keepsake quote card with a pressed bloom -->
+            <!-- a keepsake quote card crowned by the swag -->
             <figure class="folio-card fc-quote reveal reveal--media" data-element-key="folio-quote">
-              <span class="fc-quote__bloom" aria-hidden="true"><img src="assets/art/bloom.webp" alt=""></span>
               <blockquote data-content="content.storyQuote">“To love and be loved is to feel the sun from both sides.”</blockquote>
               <figcaption data-content="content.storyQuoteLabel">— a page from our notebook</figcaption>
             </figure>
@@ -337,17 +379,8 @@
               <p class="folio-card__hand" data-content="content.storyCaptionFour">the long way home</p>
             </div>
 
-            <span class="story-caption" aria-hidden="true" data-content="content.storyAside" data-element-key="story-caption">the beginning of always</span>
-
-            <div class="story-keepsake" aria-hidden="true" data-element-key="story-keepsake">
-              <svg class="postmark">
-                <use href="#postmark" />
-              </svg>
-              <span class="keepsake-stamp"><img src="assets/art/bloom.webp" alt=""></span>
-            </div>
           </div>
         </div>
-        <img class="story-bloom story-bloom--bottom" src="assets/art/bloom.webp" alt="" aria-hidden="true" data-element-key="story-garland-bottom">
       </section>
 
       <!-- ══════════════════════════════════════════════════════════
@@ -358,7 +391,7 @@
         <div class="container">
 
           <div class="std-candles reveal reveal--media" data-element-key="std-candles" data-drift>
-            <img src="assets/art/candles.webp" alt="" aria-hidden="true">
+            <svg viewBox="0 0 240 40" aria-hidden="true"><use href="#moon-phases" /></svg>
           </div>
 
           <div class="std-heading-wrap reveal">
@@ -472,11 +505,11 @@
                     <path d="M210 48c3 4 3 8 0 12-3-4-3-8 0-12Zm-12 22c4-1 8 0 12 3-4 3-8 2-12-3Zm24 0c-4-1-8 0-12 3 4 3 8 2 12-3Z" />
                   </g>
                   <!-- the wedding rings under the apex -->
-                  <circle cx="196" cy="128" r="13" />
-                  <circle cx="224" cy="128" r="13" />
-                  <path d="M210 108l4.5 6.5-4.5 6.5-4.5-6.5Z" fill="currentColor" stroke="none" />
+                  <circle cx="196" cy="106" r="13" />
+                  <circle cx="224" cy="106" r="13" />
+                  <path d="M210 86l4.5 6.5-4.5 6.5-4.5-6.5Z" fill="currentColor" stroke="none" />
                   <!-- the monogram -->
-                  <text class="details-art__mono" x="210" y="222" text-anchor="middle" data-content="couple.initials">M · T</text>
+                  <text class="details-art__mono" x="210" y="178" text-anchor="middle" data-content="couple.initials">M · T</text>
                 </g>
               </svg>
               <img class="details-art__bouquet" src="assets/art/bouquet.webp" alt="" aria-hidden="true">
@@ -537,7 +570,9 @@
          № 07 · VENUE & LOCATION — the orangery, under the lights
          ══════════════════════════════════════════════════════════ -->
       <section id="venue" class="scene scene--venue scene--night" aria-labelledby="venue-title">
-        <img class="venue-lights" src="assets/art/lights.webp" alt="" aria-hidden="true" data-element-key="venue-lights" data-drift>
+        <svg class="venue-lights" viewBox="0 0 1200 190" preserveAspectRatio="xMidYMin slice" aria-hidden="true" data-element-key="venue-lights" data-drift>
+          <use href="#garland" />
+        </svg>
         <div class="venue-body">
           <div class="container">
             <div class="venue-head reveal">

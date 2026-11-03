@@ -1,84 +1,154 @@
 /* ═══════════════════════════════════════════════════════════════
    NOCTURNE · rsvp.css
-   The reply card's controls: gold under-ruled inputs, starlit
-   radio diamonds, a gilded button, honest states.
+   № 08 · The reply card — a quiet letterpress form.
    ═══════════════════════════════════════════════════════════════ */
 
-.rsvp-form {
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 2rem);
-  text-align: left;
-}
+.scene--rsvp { overflow: clip; }
 
-.rsvp-honeypot {
+.watermark-script {
   position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  font-family: var(--font-script);
+  font-size: clamp(9rem, 24vw, 19rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--champagne) 5%, transparent);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
-/* ── Under-ruled text fields ────────────────────────────────── */
-.field { display: grid; gap: .45rem; }
-.field--half-row { grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 1.6rem); }
-.field--half-row .field { gap: .45rem; }
+.rsvp-card {
+  position: relative;
+  width: min(100%, 40rem);
+  margin-inline: auto;
+  padding: clamp(2.6rem, 6vh, 4rem) clamp(1.6rem, 5vw, 3.4rem) clamp(2.2rem, 5vh, 3rem);
+  border: 1px solid color-mix(in srgb, var(--champagne) 20%, transparent);
+  background: linear-gradient(170deg,
+    color-mix(in srgb, var(--night) 74%, transparent),
+    color-mix(in srgb, var(--night-deep) 80%, transparent));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.rsvp-card::before {
+  content: "";
+  position: absolute;
+  inset: .7rem;
+  border: 1px solid color-mix(in srgb, var(--champagne) 10%, transparent);
+  pointer-events: none;
+}
+
+.rsvp-title {
+  margin-top: 1.1rem;
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-size: clamp(2rem, 5.4vw, 2.9rem);
+  letter-spacing: .05em;
+  color: var(--ivory);
+}
+
+.rsvp-deadline {
+  margin-top: .9rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-lead);
+  color: var(--night-ink);
+}
+
+.rsvp-ornament {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 2.2rem;
+}
+
+.rsvp-ornament svg {
+  width: 8rem;
+  height: auto;
+  color: color-mix(in srgb, var(--champagne) 46%, transparent);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+/* ── fields ──────────────────────────────────────────────────── */
+
+.rsvp-form {
+  text-align: left;
+  display: grid;
+  gap: 1.9rem;
+}
+
+.field {
+  display: grid;
+  gap: .65rem;
+}
 
 .field label,
 .field-legend {
   font-family: var(--font-body);
   font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: .3em;
+  font-weight: 400;
+  letter-spacing: .32em;
   text-transform: uppercase;
-  color: var(--night-faint);
+  color: var(--gilding-soft);
+  padding: 0;
 }
 
-fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
-.field-legend { border: 0; padding: 0; margin: 0; }
-
 .field input[type="text"],
-.field input[type="email"],
 .field input[type="number"],
-.field select,
 .field textarea {
   width: 100%;
+  padding: .55rem .1rem;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ivory) 22%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--champagne) 26%, transparent);
   border-radius: 0;
-  padding: .55rem .1rem .65rem;
-  color: var(--ivory);
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2.8vw, 1.2rem);
-  transition: border-color var(--t-fast) var(--ease-soft), background-color var(--t-fast);
-  appearance: none;
-  -webkit-appearance: none;
+  font-size: 1.08rem;
+  color: var(--moonlit);
+  transition: border-color var(--t-fast) var(--ease-soft);
 }
 
 .field textarea {
   resize: vertical;
-  min-height: 5.2rem;
-  line-height: 1.55;
+  min-height: 3rem;
+  line-height: 1.6;
 }
 
-.field input:focus-visible,
-.field input[type="number"]:focus-visible,
-.field select:focus-visible,
-.field textarea:focus-visible {
-  outline: none;
-  border-bottom-color: var(--champagne);
-  background: color-mix(in srgb, var(--champagne) 7%, transparent);
-}
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: color-mix(in srgb, var(--ivory) 34%, transparent);
+.field ::placeholder {
+  color: color-mix(in srgb, var(--ivory) 30%, transparent);
   font-style: italic;
+  font-weight: 300;
 }
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: color-mix(in srgb, var(--champagne) 66%, transparent);
+}
+
+.field--invalid input,
+.field--invalid textarea {
+  border-bottom-color: color-mix(in srgb, var(--rose) 70%, transparent);
+}
+
+.field-error {
+  font-family: var(--font-hand);
+  font-size: .95rem;
+  color: var(--rose);
+}
+
+/* the number field reads best narrow */
 
 .field input[type="number"] {
-  max-width: 8.5rem;
+  max-width: 6.5rem;
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .field input[type="number"]::-webkit-outer-spin-button,
@@ -87,45 +157,29 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
   margin: 0;
 }
 
-.field select {
-  cursor: pointer;
-  background-image: linear-gradient(45deg, transparent 50%, var(--champagne) 50%),
-                    linear-gradient(135deg, var(--champagne) 50%, transparent 50%);
-  background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%;
-  background-size: 5px 5px;
-  background-repeat: no-repeat;
-  padding-right: 2rem;
-}
+/* ── attendance: two equal, quiet options ────────────────────── */
 
-.field select:invalid { color: color-mix(in srgb, var(--ivory) 34%, transparent); }
-
-.field select option {
-  background: var(--night);
-  color: var(--ivory);
-}
-
-/* ── Attendance choices — starlit radio diamonds ────────────── */
 .choices {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .9rem;
-}
-
-@media (max-width: 30rem) {
-  .choices { grid-template-columns: 1fr; }
+  gap: .8rem;
 }
 
 .choice {
+  position: relative;
   display: flex;
   align-items: center;
   gap: .8rem;
-  padding: .95rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--ivory) 14%, transparent);
-  border-radius: 1px;
-  background: transparent;
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--champagne) 22%, transparent);
+  background: color-mix(in srgb, var(--night-deep) 30%, transparent);
   cursor: pointer;
   transition: border-color var(--t-fast) var(--ease-soft),
-              box-shadow var(--t-fast) var(--ease-soft);
+              background-color var(--t-fast) var(--ease-soft);
+}
+
+.choice:hover {
+  border-color: color-mix(in srgb, var(--champagne) 48%, transparent);
 }
 
 .choice input {
@@ -135,99 +189,79 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 }
 
 .choice .diamond {
-  width: 13px;
-  height: 13px;
   flex: none;
-  border: 1px solid var(--champagne-soft);
+  width: .62rem;
+  height: .62rem;
   transform: rotate(45deg);
-  background: transparent;
-  transition: background-color var(--t-fast) var(--ease-soft),
-              box-shadow var(--t-fast) var(--ease-soft);
+  border: 1px solid color-mix(in srgb, var(--champagne) 60%, transparent);
+  transition: background-color var(--t-fast) var(--ease-soft);
 }
 
-.choice span.text {
-  font-family: var(--font-display);
-  font-size: 1.02rem;
+.choice .text {
+  font-family: var(--font-body);
+  font-size: .66rem;
+  font-weight: 400;
+  letter-spacing: .26em;
+  text-transform: uppercase;
   color: var(--night-ink);
   transition: color var(--t-fast) var(--ease-soft);
 }
 
-.choice:hover {
-  border-color: var(--champagne-soft);
-  box-shadow: 0 4px 16px rgba(4, 6, 12, .3);
-}
-
 .choice:has(input:checked) {
-  border-color: var(--champagne-soft);
-  background: color-mix(in srgb, var(--champagne) 8%, transparent);
+  border-color: color-mix(in srgb, var(--champagne) 64%, transparent);
+  background: color-mix(in srgb, var(--champagne) 12%, transparent);
 }
 
 .choice:has(input:checked) .diamond {
-  background: var(--candle);
-  border-color: var(--candle);
-  box-shadow:
-    0 0 10px 1px color-mix(in srgb, var(--candle) 45%, transparent),
-    0 0 0 2px color-mix(in srgb, var(--night) 80%, transparent),
-    0 0 0 3.5px color-mix(in srgb, var(--champagne) 34%, transparent);
+  background: var(--gilding);
 }
 
-.choice:has(input:checked) .text { color: var(--gilding); }
+.choice:has(input:checked) .text { color: var(--moonlit); }
 
-.choice input:focus-visible + .diamond {
-  outline: 2px solid var(--champagne);
-  outline-offset: 3px;
+.choice:has(input:focus-visible) {
+  outline: 2px solid color-mix(in srgb, var(--champagne) 72%, transparent);
+  outline-offset: 2px;
 }
 
-/* ── Honest states ──────────────────────────────────────────── */
-.field.is-invalid input,
-.field.is-invalid select,
-.field.is-invalid textarea { border-bottom-color: color-mix(in srgb, var(--rose) 82%, #D98A8A); }
-
-.field-error {
-  margin: 0;
-  font-size: var(--fs-small);
-  color: color-mix(in srgb, var(--rose) 78%, #E4A9A9);
-}
-
-.choices .field-error { grid-column: 1 / -1; }
+/* ── submit ──────────────────────────────────────────────────── */
 
 .rsvp-actions {
   display: grid;
   justify-items: center;
-  gap: .9rem;
+  gap: 1.2rem;
   margin-top: .4rem;
 }
 
+.rsvp-actions .btn { min-width: 14rem; }
+
 .rsvp-note {
-  margin: 0;
   max-width: 30rem;
-  text-align: center;
-  font-size: var(--fs-small);
-  line-height: 1.6;
+  font-size: .8rem;
+  line-height: 1.65;
   color: var(--night-faint);
 }
 
-.rsvp-note strong { font-style: normal; font-weight: 500; color: var(--gilding); }
-
-.rsvp-status {
-  margin: 0;
-  font-size: var(--fs-small);
-  color: var(--gilding);
-  min-height: 1.2em;
+.rsvp-note strong {
+  font-weight: 400;
+  color: var(--gilding-soft);
+  letter-spacing: .08em;
 }
 
-.rsvp-status [aria-live] { display: inline; }
-.rsvp-status.is-error { color: color-mix(in srgb, var(--rose) 78%, #E4A9A9); }
+.rsvp-status {
+  min-height: 1.2rem;
+  font-size: .85rem;
+  color: var(--gilding);
+}
 
-/* ── The reply preview ──────────────────────────────────────── */
+/* ── the preview / confirmation ──────────────────────────────── */
+
 .rsvp-preview {
   display: grid;
-  gap: 1.2rem;
+  gap: 1.4rem;
   text-align: center;
 }
 
-.rsvp-preview .script-intro {
-  margin: 0;
+.script-intro {
   font-family: var(--font-script);
   font-size: clamp(1.9rem, 5vw, 2.6rem);
   color: var(--gilding);
@@ -236,35 +270,43 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .rsvp-summary {
   display: grid;
   gap: 0;
-  margin: 0;
-  border-top: 1px solid var(--hairline-light);
+  text-align: left;
+  border-top: 1px solid color-mix(in srgb, var(--champagne) 16%, transparent);
 }
 
 .rsvp-summary > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.4rem;
-  padding: .75rem .2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--ivory) 9%, transparent);
-  text-align: left;
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.2rem;
+  padding-block: .85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--champagne) 12%, transparent);
 }
 
 .rsvp-summary dt {
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: .22em;
+  font-size: .6rem;
+  font-weight: 400;
+  letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--night-faint);
-  padding-top: .3rem;
+  color: var(--gilding-soft);
+  padding-top: .25rem;
 }
 
 .rsvp-summary dd {
-  margin: 0;
   font-family: var(--font-display);
   font-size: 1.02rem;
   color: var(--moonlit);
-  text-align: right;
   overflow-wrap: anywhere;
 }
 
-.rsvp__demo-note { margin-inline: auto; }
+.rsvp__demo-note {
+  margin-inline: auto;
+}
+
+/* honeypot stays invisible */
+.rsvp-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
